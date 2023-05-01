@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mousspc <mousspc@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:30:09 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/01 02:11:49 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/01 22:43:06 by mousspc          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void PhoneBook::AddContact(void)
 	std::string nick;
 	std::string phone;
 	std::string secret;
+	static int	index;
 
 	std::cout << "Enter first name: ";
 	std::getline(std::cin, first_name);
@@ -88,7 +89,14 @@ void PhoneBook::AddContact(void)
 		std::getline(std::cin, secret);
 	}
 	if (this->_nbContacts == MAX_CONTACTS)
-		this->_nbContacts = 0;
-	this->_contact[this->_nbContacts].MakeContact(first_name, last_name, nick, phone, secret);
+	{
+		this->_index = index;
+		index++;
+		this->_nbContacts--;
+	}
+	if (index == MAX_CONTACTS)
+		index = 0;
+	this->_contact[this->_index].MakeContact(first_name, last_name, nick, phone, secret);
 	this->_nbContacts++;
+	this->_index++;
 }
