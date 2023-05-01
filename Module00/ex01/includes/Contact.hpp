@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.hpp                                        :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:29:34 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/04/29 23:36:42 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/01 02:16:02 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
+
 #include <iostream>
 #include <string>
+#define MAX_CONTACTS 8
 
 class Contact
 {
 	private:
-		std::string first_name;
-		std::string last_name;
-		std::string nickname;
-		int			phone_number;
-		std::string	darkest_secret;
+		std::string _FirstName;
+		std::string _LastName;
+		std::string _NickName;
+		std::string	_PhoneNumber;
+		std::string	_DarkestSecret;
+	public:
+		void MakeContact(std::string f_name, std::string l_name, std::string nick, std::string phone, std::string secret);
+		std::string	GetFirstName(void);
+		std::string GetLastName(void);
+		std::string GetNickName(void);
+		std::string GetPhoneNumber(void);
+		std::string GetDarkestSecret(void);
 };
+
+#endif
