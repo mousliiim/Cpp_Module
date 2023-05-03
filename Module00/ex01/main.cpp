@@ -6,40 +6,39 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:28:33 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/01 01:35:15 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/03 02:08:53 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/PhoneBook.hpp"
+#include "PhoneBook.hpp"
+#include "Main.hpp"
+
+void StringToUpper(std::string &str)
+{
+	for (int i = 0; str[i]; i++)
+		str[i] = std::toupper(str[i]);
+}
 
 int main(void)
 {
 	PhoneBook phonebook;
 	std::string command;
+	PrintProgramStart();
 	while (true)
 	{
-		std::cout << "Enter a command: ";
+		std::cout << WHITE << "$PhoneBook ✗ " << RESET;
 		std::getline(std::cin, command);
-		if (command == "EXIT")
-			break;
+		StringToUpper(command);
+		if (command == "EXIT" || std::cin.eof())
+			return (std::cout << WHITE << "\nGoodbye ! 👋" << RESET << std::endl, 0);
 		else if (command == "ADD")
-		{
-			std::cout << "ADD" << std::endl; // TODO: add contact
-			phonebook.AddContact(); // For add a contact
-		}
+			phonebook.AddContact();
 		else if (command == "SEARCH")
-		{
-			std::cout << "SEARCH" << std::endl; // TODO: search contact
-			// phonebook.search_contact(); // For find a contact
-		}
-		else if (command == "PRINT")
-		{
-			std::cout << "PRINT" << std::endl; // TODO: print contact
-			// phonebook.print_contact(); // For print a contact
-			phonebook.PrintContact();
-		}
+			phonebook.SearchContact();
+		else if (IsEmpty(command))
+			continue;
 		else
-			std::cout << "Invalid command" << std::endl;
+			 std::cout << "\"" << command << "\"" <<" is invalid command in PhoneBook programm" << std::endl;
 	}
 	return (0);
 }

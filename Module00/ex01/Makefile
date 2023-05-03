@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/02 17:59:57 by mmourdal          #+#    #+#              #
-#    Updated: 2023/04/29 22:59:42 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/05/03 02:07:44 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,9 @@ PRINT_NAME = @printf "\n$(RED)%2s$(ART_NAME_1)%1s$(ART_NAME_2)%1s$(ART_NAME_3)%1
 #                                  SOURCES                                     #
 ################################################################################
 
-SRC_FILES	=	$(addprefix classes/Contact/, contact.cpp) \
-				$(addprefix classes/PhoneBook/, phonebook.cpp) \
+SRC_FILES	=	$(addprefix classes/Contact/, Contact.cpp) \
+				$(addprefix classes/PhoneBook/, PhoneBook.cpp) \
+				$(addprefix actions/, print.cpp utils.cpp) \
 				main.cpp
 
 ################################################################################
@@ -48,7 +49,7 @@ OBJS		= $(SRC_FILES:%.cpp=$(OBJS_DIR)/%.o)
 ################################################################################
 
 CC			= c++
-CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror
+CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes
 
 ################################################################################
 #                                  MAKEFILE                                    #
@@ -75,6 +76,9 @@ $(OBJS_DIR) :
 	@sleep 0.2
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/PhoneBook...\n"
 	@mkdir $(OBJS_DIR)/classes/PhoneBook
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/actions...\n"
+	@mkdir $(OBJS_DIR)/actions
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2

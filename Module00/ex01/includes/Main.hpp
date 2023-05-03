@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   Main.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/29 22:29:15 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/03 02:09:01 by mmourdal         ###   ########.fr       */
+/*   Created: 2023/05/02 18:11:15 by mmourdal          #+#    #+#             */
+/*   Updated: 2023/05/03 02:10:10 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef MAIN_HPP
+# define MAIN_HPP
+
 
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include <iomanip>
 
-# include "Contact.hpp"
+#define RED "\033[1;31m"
+#define GREEN "\033[1;32m"
+#define WHITE "\033[1;37m"
+#define RESET "\033[0m"
 
-class PhoneBook
-{
-	private:
-		Contact _contact[MAX_CONTACTS];
-		int		_nbContacts;
-		int		_index;
-	public:
-		PhoneBook();
-		void PrintContactIndex(int index);
-		void AddContact(void);
-		void SearchContact(void);
-};
+std::string	TakeInfo(std::string info, std::string CharOrDigit);
+bool		CheckIfAlpha(std::string input);
+bool		CheckIfDigit(std::string input);
+bool		IsEmpty(std::string);
+void		PrintProgramStart(void);
 
 #endif
