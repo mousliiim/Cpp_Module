@@ -12,13 +12,13 @@ Account::Account(void) {}
 Account::~Account(void)
 { 
 	_displayTimestamp();
-	std::cout	<< "index:" << _accountIndex << ";" << "amount:" << _amount << ";closed" << std :: endl;
+	std::cout << "index:" << _accountIndex << ";" << "amount:" << _amount << ";closed" << std::endl;
 }
 
 Account::Account(int initial_deposit)
 {
 	_displayTimestamp();
-	std :: cout	<< "index:" << _nbAccounts << ";" << "amount:" << initial_deposit << ";created" << std :: endl;
+	std::cout << "index:" << _nbAccounts << ";" << "amount:" << initial_deposit << ";created" << std::endl;
 	_amount = initial_deposit;
 	_totalAmount += _amount;
 	_accountIndex = _nbAccounts;
@@ -66,7 +66,7 @@ void	Account::makeDeposit( int deposit )
 	_displayTimestamp();
 	_nbDeposits++;
 	_totalNbDeposits++;
-	std::cout	<< "index:" << _accountIndex << ";p_amount:" << _amount << ";deposit:" << deposit << ";amount:" << deposit + _amount << ";nb_deposits:" << _nbDeposits << std::endl;
+	std::cout << "index:" << _accountIndex << ";p_amount:" << _amount << ";deposit:" << deposit << ";amount:" << deposit + _amount << ";nb_deposits:" << _nbDeposits << std::endl;
 	_amount += deposit;
 	_totalAmount += deposit;
 }
@@ -84,7 +84,7 @@ bool	Account :: makeWithdrawal(int withdrawal)
 	{
 		_amount -= withdrawal;
 		_totalAmount -= withdrawal;
-		std::cout << "withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << ++_nbWithdrawals << std :: endl;
+		std::cout << "withdrawal:" << withdrawal << ";amount:" << _amount << ";nb_withdrawals:" << ++_nbWithdrawals << std::endl;
 		_totalNbWithdrawals++;
 	}
 	return (check);
