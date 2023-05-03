@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 02:06:53 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/03 02:09:42 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:21:42 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,21 @@ std::string TakeInfo(std::string info, std::string CharOrDigit)
 				std::cout << info << " can't be empty" << std::endl;
 			else if (!CheckIfDigit(input))
 				std::cout << info << " can contain only digit" << std::endl;
+			std::cout << "Enter " << info << ": ";
+			std::getline(std::cin, input);
+			if (std::cin.eof())
+			{
+				std::cout << WHITE << "\n\nGoodbye ! 👋" << RESET << std::endl;
+				exit(0);
+			}
+		}
+	}
+	else
+	{
+		while (IsEmpty(input))
+		{
+			if (IsEmpty(input))
+				std::cout << info << " can't be empty" << std::endl;
 			std::cout << "Enter " << info << ": ";
 			std::getline(std::cin, input);
 			if (std::cin.eof())

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 22:30:09 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/03 02:09:40 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/03 18:22:35 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void PhoneBook::AddContact(void)
 
 	first_name = TakeInfo("First Name", "ALPHA");
 	last_name = TakeInfo("Last Name", "ALPHA");
-	nick = TakeInfo("Nickname", "ALPHA");
+	nick = TakeInfo("Nickname", "TWO");
 	phone = TakeInfo("Phone Number", "DIGIT");
-	secret = TakeInfo("Darkest Secret", "ALPHA");
+	secret = TakeInfo("Darkest Secret", "TWO");
 	if (this->_nbContacts == MAX_CONTACTS)
 	{
 		this->_index = index;
