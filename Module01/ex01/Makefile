@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/04/02 17:59:57 by mmourdal          #+#    #+#              #
-#    Updated: 2023/05/04 22:13:38 by mmourdal         ###   ########.fr        #
+#    Created: 2023/05/04 19:34:47 by mmourdal          #+#    #+#              #
+#    Updated: 2023/05/04 22:10:22 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,11 @@ WHITE	= \033[1;37m
 BLINK	= \033[5m
 END		= \033[0m
 
-ART_NAME_1 =  ██████ ██████  ██████      ███    ███  ██████  ██████  ██    ██ ██      ███████      ██████   ██████  \n
-ART_NAME_2 = ██      ██   ██ ██   ██     ████  ████ ██    ██ ██   ██ ██    ██ ██      ██          ██  ████ ██  ████ \n
-ART_NAME_3 = ██      ██████  ██████      ██ ████ ██ ██    ██ ██   ██ ██    ██ ██      █████       ██ ██ ██ ██ ██ ██ \n
-ART_NAME_4 = ██      ██      ██          ██  ██  ██ ██    ██ ██   ██ ██    ██ ██      ██          ████  ██ ████  ██ \n
-ART_NAME_5 =  ██████ ██      ██          ██      ██  ██████  ██████   ██████  ███████ ███████      ██████   ██████  \n
+ART_NAME_1 =  ██████ ██████  ██████      ███    ███  ██████  ██████  ██    ██ ██      ███████      ██████   ██ \n
+ART_NAME_2 = ██      ██   ██ ██   ██     ████  ████ ██    ██ ██   ██ ██    ██ ██      ██          ██  ████ ███ \n
+ART_NAME_3 = ██      ██████  ██████      ██ ████ ██ ██    ██ ██   ██ ██    ██ ██      █████       ██ ██ ██  ██ \n
+ART_NAME_4 = ██      ██      ██          ██  ██  ██ ██    ██ ██   ██ ██    ██ ██      ██          ████  ██  ██ \n
+ART_NAME_5 =  ██████ ██      ██          ██      ██  ██████  ██████   ██████  ███████ ███████      ██████   ██ \n
 
 PRINT_NAME = @printf "\n$(RED)%2s$(ART_NAME_1)%1s$(ART_NAME_2)%1s$(ART_NAME_3)%1s$(ART_NAME_4)%2s$(ART_NAME_5)$(END)\n"
 
@@ -32,9 +32,8 @@ PRINT_NAME = @printf "\n$(RED)%2s$(ART_NAME_1)%1s$(ART_NAME_2)%1s$(ART_NAME_3)%1
 #                                  SOURCES                                     #
 ################################################################################
 
-SRC_FILES	=	$(addprefix classes/Contact/, Contact.cpp) \
-				$(addprefix classes/PhoneBook/, PhoneBook.cpp) \
-				$(addprefix actions/, print.cpp utils.cpp) \
+SRC_FILES	=	$(addprefix classes/Zombie/, Zombie.cpp) \
+				$(addprefix srcs/, zombieHorde.cpp) \
 				main.cpp
 
 ################################################################################
@@ -55,7 +54,7 @@ CFLAGS		= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = PhoneBook
+NAME = HordeZombie
 all : $(NAME)
 
 $(NAME) : $(OBJS_DIR) $(OBJS)
@@ -71,14 +70,11 @@ $(OBJS_DIR) :
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes...\n"
 	@mkdir $(OBJS_DIR)/classes
 	@sleep 0.2
-	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Contact...\n"
-	@mkdir $(OBJS_DIR)/classes/Contact
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Zombie...\n"
+	@mkdir $(OBJS_DIR)/classes/Zombie
 	@sleep 0.2
-	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/PhoneBook...\n"
-	@mkdir $(OBJS_DIR)/classes/PhoneBook
-	@sleep 0.2
-	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/actions...\n"
-	@mkdir $(OBJS_DIR)/actions
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/srcs...\n"
+	@mkdir $(OBJS_DIR)/srcs
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2
