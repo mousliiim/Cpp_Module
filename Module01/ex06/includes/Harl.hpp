@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 23:07:07 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/11 01:28:55 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/11 18:48:16 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <cctype>
 
 # define RED "\033[1;31m"
 # define RESET "\033[0m"
@@ -23,7 +24,6 @@ class Harl
 {
 	public:
 		Harl ( void );
-		void complain ( std::string level );
 		void displayLevel ( void );
 		void setLevel ( std::string level );
 		std::string getLevel ( void );
