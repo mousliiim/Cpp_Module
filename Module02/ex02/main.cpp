@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:19:34 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/19 21:33:11 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:25:27 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,12 @@
 int main( void )
 {
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	a = Fixed( 1234.4321f );
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+	Fixed b;
+
+	b.setRawBits(5);
+	std::cout << "b = " << b.getRawBits() << std::endl;
+	a.setRawBits(5);
+	std::cout << "a = " << a.getRawBits() << std::endl;
+	std::cout << "Result = " << a + b << std::endl;
 	return (0);
 }

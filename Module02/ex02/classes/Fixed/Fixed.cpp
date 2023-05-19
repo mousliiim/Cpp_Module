@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 00:22:08 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/19 21:44:27 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/19 22:26:55 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,11 @@ std::ostream	&operator<<( std::ostream &out, const Fixed &fix )
 {
 	out << fix.toFloat();
 	return (out);
+}
+
+Fixed	Fixed::operator+(const Fixed &fix) const
+{
+	Fixed tmp;
+	tmp.setRawBits(this->_nb + fix.getRawBits());
+	return (tmp);
 }
