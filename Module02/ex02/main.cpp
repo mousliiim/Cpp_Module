@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:19:34 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/19 22:25:27 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/21 23:25:03 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int main( void )
 {
 	Fixed a;
-	Fixed b;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	std::cout << a << std::endl;
+	std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 
-	b.setRawBits(5);
-	std::cout << "b = " << b.getRawBits() << std::endl;
-	a.setRawBits(5);
-	std::cout << "a = " << a.getRawBits() << std::endl;
-	std::cout << "Result = " << a + b << std::endl;
-	return (0);
+	return 0;
 }
