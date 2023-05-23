@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:30 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/24 01:17:35 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/24 01:27:20 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,32 @@
 # include <iostream>
 # include <string>
 
-# define RED "\033[1;31m"
-# define GREEN "\033[1;32m"
-
 class ClapTrap
 {
 	public:
 		ClapTrap	( void );
 		ClapTrap	( std::string name);
 		~ClapTrap	( void );
-
-		ClapTrap		&operator=(const ClapTrap& clap);
-		std::string		getName ( void ) const;
-		void			setName ( std::string &name );
-		int	getHitPoints ( void ) const;
-		void			setHitPoints ( int hitPoints );
-		int	getEnergyPoints ( void ) const;
-		void			setEnergyPoints( int energyPoints );
-		int	getAttackDamage ( void ) const;
-		void			setAttackDamage ( int attackDamage );
-		void 			attack ( const std::string &target );
-		void 			takeDamage ( int amount );
-		void 			beRepaired ( int amount );
-		bool 			ifPossible ( void );
-		void			getAllInfo ( void );
+		ClapTrap	&operator=(const ClapTrap& clap);
+		
+		std::string	getName ( void ) const;
+		void		setName ( std::string &name );
+		int			getHitPoints ( void ) const;
+		void		setHitPoints ( int hitPoints );
+		int			getEnergyPoints ( void ) const;
+		void		setEnergyPoints( int energyPoints );
+		int			getAttackDamage ( void ) const;
+		void		setAttackDamage ( int attackDamage );
+		void 		attack ( const std::string &target );
+		void 		takeDamage ( int amount );
+		void 		beRepaired ( int amount );
+		bool 		ifPossible ( void );
+		void		getAllInfo ( void );
 	private:
-		std::string		_name;
-		int	_hitPoints;
-		int	_energyPoints;
-		int	_attackDamage;
+		std::string	_name;
+		int			_hitPoints;
+		int			_energyPoints;
+		int			_attackDamage;
 };
 
 #endif
