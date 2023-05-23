@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 19:03:30 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/23 22:10:49 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/24 01:17:35 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,22 @@ class ClapTrap
 		ClapTrap		&operator=(const ClapTrap& clap);
 		std::string		getName ( void ) const;
 		void			setName ( std::string &name );
-		unsigned int	getHitPoints ( void ) const;
-		void			setHitPoints ( unsigned int hitPoints );
-		unsigned int	getEnergyPoints ( void ) const;
-		void			setEnergyPoints( unsigned int energyPoints );
-		unsigned int	getAttackDamage ( void ) const;
-		void			setAttackDamage ( unsigned int attackDamage );
+		int	getHitPoints ( void ) const;
+		void			setHitPoints ( int hitPoints );
+		int	getEnergyPoints ( void ) const;
+		void			setEnergyPoints( int energyPoints );
+		int	getAttackDamage ( void ) const;
+		void			setAttackDamage ( int attackDamage );
 		void 			attack ( const std::string &target );
-		void 			takeDamage ( unsigned int amount );
-		void 			beRepaired ( unsigned int amount );
+		void 			takeDamage ( int amount );
+		void 			beRepaired ( int amount );
 		bool 			ifPossible ( void );
 		void			getAllInfo ( void );
 	private:
 		std::string		_name;
-		unsigned int	_hitPoints;
-		unsigned int	_energyPoints;
-		unsigned int	_attackDamage;
+		int	_hitPoints;
+		int	_energyPoints;
+		int	_attackDamage;
 };
 
 #endif
