@@ -16,6 +16,7 @@ class WrongAnimal
 		std::string	getType ( void ) const;
 		void		setType ( std::string &typeOfAnimal );
 		void		makeSound ( void ) const;
+		
 	protected:
 		std::string type;
 };

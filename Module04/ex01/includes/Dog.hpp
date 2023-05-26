@@ -10,14 +10,15 @@ class Dog : public Animal
 {
 	public:
 		Dog ( void );
-		Dog ( std::string &typeOfAnimal );
+		Dog ( std::string typeOfAnimal );
 		Dog ( Dog const &src );
-		~Dog ( void );
+		virtual ~Dog ( void );
+		Dog	&operator= ( Dog const &rhs );
 
-		Dog				&operator= ( Dog const &rhs );
-		std::string		getType ( void ) const;
-		Brain 			*getBrain ( void ) const;
-		void			makeSound ( void ) const;
+		virtual std::string getType ( void ) const;
+		virtual void		makeSound ( void ) const;
+		virtual Brain 		*getBrain ( void ) const;
+		void 				setBrain ( Brain *brain );
 	private:
 		Brain *_brain;
 };

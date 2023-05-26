@@ -9,7 +9,7 @@ class WrongCat : public WrongAnimal
 {
 	public:
 		WrongCat ( void );
-		WrongCat ( std::string &typeOfAnimal );
+		WrongCat ( std::string typeOfAnimal );
 		WrongCat ( WrongCat const &src );
 		~WrongCat ( void );
 

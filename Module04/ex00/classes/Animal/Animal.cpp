@@ -24,17 +24,11 @@ Animal::~Animal() { std::cout << "Animal :: Destructor Called\n"; }
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Animal &Animal::operator=( Animal const & rhs )
+Animal &Animal::operator=( Animal const &rhs )
 {
 	if ( this != &rhs )
-		*this = rhs;
+		this->type = rhs.getType();
 	return *this;
-}
-
-std::ostream &operator<<( std::ostream &o, Animal const &rhs )
-{
-	o << "Value = " << rhs.getType();
-	return o;
 }
 
 /*
@@ -55,7 +49,7 @@ std::string Animal::getType ( void ) const
 	return (this->type);
 }
 
-void Animal::setType ( std::string &typeOfAnimal )
+void Animal::setType ( std::string typeOfAnimal )
 {
 	this->type = typeOfAnimal;
 }

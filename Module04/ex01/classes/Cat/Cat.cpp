@@ -10,7 +10,7 @@ Cat::Cat( void ) : Animal("Cat")
 	this->_brain = new Brain();
 }
 
-Cat::Cat ( std::string &typeOfAnimal ) : Animal(typeOfAnimal)
+Cat::Cat ( std::string typeOfAnimal ) : Animal(typeOfAnimal)
 {
 	std::cout << "Cat :: Constructor Called\n";
 	this->_brain = new Brain();
@@ -22,7 +22,6 @@ Cat::Cat( const Cat &src ) : Animal ( src )
 	std::cout << "Cat :: Copy Constructor Called\n";
 }
 
-
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
@@ -33,12 +32,11 @@ Cat::~Cat()
 	delete this->_brain;
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat	&Cat::operator=( Cat const & rhs )
+Cat	&Cat::operator=( Cat const &rhs )
 {
 	if ( this != &rhs )
 	{
@@ -59,6 +57,11 @@ void Cat::makeSound ( void ) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+
+void Cat::setBrain ( Brain *brain )
+{
+	this->_brain = brain;
+}
 
 std::string	Cat::getType ( void ) const
 {

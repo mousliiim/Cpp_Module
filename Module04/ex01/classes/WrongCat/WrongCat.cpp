@@ -6,7 +6,7 @@
 
 WrongCat::WrongCat( void ) : WrongAnimal("WrongCat") { std::cout << "WrongCat :: Default Constructor Called\n"; }
 
-WrongCat::WrongCat ( std::string &typeOfAnimal ) : WrongAnimal(typeOfAnimal) { std::cout << "WrongCat :: Constructor Called\n"; }
+WrongCat::WrongCat ( std::string typeOfAnimal ) : WrongAnimal(typeOfAnimal) { std::cout << "WrongCat :: Constructor Called\n"; }
 
 WrongCat::WrongCat( const WrongCat &src ) : WrongAnimal ( src )
 {
@@ -28,7 +28,8 @@ WrongCat::~WrongCat() { std::cout << "WrongCat :: Destructor Called\n"; }
 
 WrongCat	&WrongCat::operator=( WrongCat const &rhs )
 {
-	( void ) rhs;
+	if ( this != &rhs )
+		this->type = rhs.getType();
 	return *this;
 }
 

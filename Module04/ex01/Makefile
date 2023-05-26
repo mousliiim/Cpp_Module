@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/05/26 20:21:34 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/05/27 00:34:24 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ CXXFLAGS	= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes -MMD -MP
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = Animal
+NAME = AnimalBrain
 all : $(NAME)
 
 $(NAME) : $(OBJS_DIR) $(OBJS)

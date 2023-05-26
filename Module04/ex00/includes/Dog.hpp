@@ -9,15 +9,13 @@ class Dog : public Animal
 {
 	public:
 		Dog ( void );
-		Dog ( std::string &typeOfAnimal );
+		Dog ( std::string typeOfAnimal );
 		Dog ( Dog const &src );
-		~Dog ( void );
-
-		Dog				&operator= ( Dog const &rhs );
-		std::string		getType ( void ) const;
-		void			makeSound ( void ) const;
+		virtual ~Dog ( void );
+		Dog	&operator= ( Dog const &rhs );
+		
+		virtual std::string	getType ( void ) const;
+		virtual void		makeSound ( void ) const;
 };
-
-std::ostream &operator<<( std::ostream & o, Dog const & i );
 
 #endif

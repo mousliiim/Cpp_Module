@@ -6,7 +6,7 @@
 
 Cat::Cat( void ) : Animal("Cat") { std::cout << "Cat :: Default Constructor Called\n"; }
 
-Cat::Cat ( std::string &typeOfAnimal ) : Animal(typeOfAnimal) { std::cout << "Cat :: Constructor Called\n"; }
+Cat::Cat ( std::string typeOfAnimal ) : Animal(typeOfAnimal) { std::cout << "Cat :: Constructor Called\n"; }
 
 Cat::Cat( const Cat &src ) : Animal ( src )
 {
@@ -26,17 +26,11 @@ Cat::~Cat() { std::cout << "Cat :: Destructor Called\n"; }
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Cat	&Cat::operator=( Cat const & rhs )
+Cat	&Cat::operator=( Cat const &rhs )
 {
 	if ( this != &rhs )
-		*this = rhs;
+		this->type = rhs.getType();
 	return *this;
-}
-
-std::ostream &operator<< ( std::ostream &o, Cat const &rhs )
-{
-	o << "Value = " << rhs.getType();
-	return o;
 }
 
 /*
@@ -55,7 +49,6 @@ std::string	Cat::getType ( void ) const
 {
 	return (this->type);
 }
-
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------

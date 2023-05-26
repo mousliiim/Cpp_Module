@@ -10,7 +10,7 @@ Dog::Dog ( void ) : Animal("Dog")
 	this->_brain = new Brain();
 }
 
-Dog::Dog ( std::string &typeOfAnimal ) : Animal(typeOfAnimal)
+Dog::Dog ( std::string typeOfAnimal ) : Animal(typeOfAnimal)
 {
 	std::cout << "Dog :: Constructor Called\n";
 	this->_brain = new Brain();
@@ -57,6 +57,11 @@ void Dog::makeSound ( void ) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
+
+void Dog::setBrain ( Brain *brain )
+{
+	this->_brain = brain;
+}
 
 std::string	Dog::getType ( void ) const
 {

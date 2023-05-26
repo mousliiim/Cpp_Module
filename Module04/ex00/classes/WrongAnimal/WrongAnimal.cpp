@@ -24,14 +24,14 @@ WrongAnimal::~WrongAnimal() { std::cout << "WrongAnimal :: Destructor Called\n";
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-WrongAnimal &WrongAnimal::operator=( WrongAnimal const & rhs )
+WrongAnimal &WrongAnimal::operator= ( WrongAnimal const &rhs )
 {
 	if ( this != &rhs )
-		*this = rhs;
+		this->type = rhs.getType();
 	return *this;
 }
 
-std::ostream &operator<<( std::ostream &o, WrongAnimal const &rhs )
+std::ostream &operator<< ( std::ostream &o, WrongAnimal const &rhs )
 {
 	o << "Value = " << rhs.getType();
 	return o;

@@ -6,7 +6,7 @@
 
 WrongCat::WrongCat( void ) : WrongAnimal("WrongCat") { std::cout << "WrongCat :: Default Constructor Called\n"; }
 
-WrongCat::WrongCat ( std::string &typeOfAnimal ) : WrongAnimal(typeOfAnimal) { std::cout << "WrongCat :: Constructor Called\n"; }
+WrongCat::WrongCat ( std::string typeOfAnimal ) : WrongAnimal(typeOfAnimal) { std::cout << "WrongCat :: Constructor Called\n"; }
 
 WrongCat::WrongCat( const WrongCat &src ) : WrongAnimal ( src )
 {
@@ -26,17 +26,11 @@ WrongCat::~WrongCat() { std::cout << "WrongCat :: Destructor Called\n"; }
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-WrongCat	&WrongCat::operator=( WrongCat const & rhs )
+WrongCat	&WrongCat::operator=( WrongCat const &rhs )
 {
 	if ( this != &rhs )
-		*this = rhs;
+		this->type = rhs.getType();
 	return *this;
-}
-
-std::ostream &operator<< ( std::ostream &o, WrongCat const &rhs )
-{
-	o << "Value = " << rhs.getType();
-	return o;
 }
 
 /*

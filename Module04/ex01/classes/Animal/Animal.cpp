@@ -44,6 +44,11 @@ void Animal::makeSound ( void ) const
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
+Brain *Animal::getBrain ( void ) const
+{
+	return (NULL);
+}
+
 std::string Animal::getType ( void ) const
 {
 	return (this->type);

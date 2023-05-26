@@ -6,7 +6,7 @@
 
 Dog::Dog ( void ) : Animal("Dog") { std::cout << "Dog :: Default Constructor Called\n"; }
 
-Dog::Dog ( std::string &typeOfAnimal ) : Animal(typeOfAnimal) { std::cout << "Dog :: Constructor Called\n"; }
+Dog::Dog ( std::string typeOfAnimal ) : Animal(typeOfAnimal) { std::cout << "Dog :: Constructor Called\n"; }
 
 Dog::Dog ( const Dog &src ) : Animal ( src )
 {
@@ -27,14 +27,8 @@ Dog::~Dog ( void ) { std::cout << "Dog :: Destructor Called\n";}
 Dog	&Dog::operator= ( Dog const &rhs )
 {
 	if ( this != &rhs )
-		*this = rhs;
+		this->type = rhs.getType();
 	return *this;
-}
-
-std::ostream &operator<< ( std::ostream &o, Dog const &rhs )
-{
-	o << "Value = " << rhs.getType();
-	return o;
 }
 
 /*
