@@ -12,7 +12,7 @@ class Animal
 		Animal ( Animal const &src );
 		virtual ~Animal ( void );
 
-		Animal		&operator= ( Animal const & rhs );
+		Animal				&operator= ( Animal const & rhs );
 		virtual std::string getType ( void ) const;
 		virtual void		setType ( std::string &typeOfAnimal );
 		virtual void		makeSound ( void ) const;
@@ -20,7 +20,5 @@ class Animal
 	protected:
 		std::string type;
 };
-
-std::ostream &			operator<<( std::ostream & o, Animal const & i );
 
 #endif

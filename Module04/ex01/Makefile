@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/05/26 16:14:06 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/05/26 20:21:34 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_FILES	= 	$(addprefix classes/Animal/, Animal.cpp) \
 				$(addprefix classes/Cat/, Cat.cpp) \
 				$(addprefix classes/WrongAnimal/, WrongAnimal.cpp) \
 				$(addprefix classes/WrongCat/, WrongCat.cpp) \
+				$(addprefix classes/Brain/, Brain.cpp) \
 				main.cpp
 
 ################################################################################
@@ -87,6 +88,9 @@ $(OBJS_DIR) :
 	@sleep 0.2
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/WrongCat$(END)$(WHITE)...\n"
 	@mkdir $(OBJS_DIR)/classes/WrongCat
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Brain$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/Brain
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2

@@ -4,6 +4,7 @@
 # include <iostream>
 # include <string>
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -15,9 +16,10 @@ class Dog : public Animal
 
 		Dog				&operator= ( Dog const &rhs );
 		std::string		getType ( void ) const;
+		Brain 			*getBrain ( void ) const;
 		void			makeSound ( void ) const;
+	private:
+		Brain *_brain;
 };
-
-std::ostream &operator<<( std::ostream & o, Dog const & i );
 
 #endif
