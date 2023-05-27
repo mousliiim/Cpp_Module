@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:35:07 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/27 21:27:37 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/27 22:39:48 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 int main()
 {
 	std::cout << "\n↓ BASIC TEST ↓\n\n";
+	/* IF I CREATE JUST ANIMAL, IT WILL BE ABSTRACT CLASS I CAN'T CREATE JUST ANIMAL OBJECT */
+	// ↓ Exemple of instanciation of abstract class ↓
+	// Animal animalTest;
 	Animal *first = new Dog();
 	Animal *second = new Dog();
 	Animal *third = new Cat();
