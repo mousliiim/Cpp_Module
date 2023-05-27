@@ -24,8 +24,15 @@ Brain::~Brain() { std::cout << "Brain :: Destructor called\n"; }
 
 Brain &Brain::operator=( Brain const &rhs )
 {
+	std::string ideas;
 	for (int i = 0; i < 100; i++)
-		this->_ideas[i] = rhs.getIdeas(i);
+	{
+		ideas = rhs.getIdeas(i);
+		if (ideas.empty())
+			continue;
+		else
+			this->setIdeas(i, ideas);
+	}
 	return *this;
 }
 
