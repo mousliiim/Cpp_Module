@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/05/27 22:47:52 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/05/28 02:02:08 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,9 @@ PRINT_NAME = @printf "\n$(RED)%2s$(ART_NAME_1)%1s$(ART_NAME_2)%1s$(ART_NAME_3)%1
 ################################################################################
 
 SRC_FILES	= 	$(addprefix classes/AMateria/, AMateria.cpp) \
+				$(addprefix classes/Cure/, Cure.cpp) \
+				$(addprefix classes/Ice/, Ice.cpp) \
+				$(addprefix classes/Character/, Character.cpp) \
 				main.cpp
 
 ################################################################################
@@ -54,6 +57,7 @@ CXXFLAGS	= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes -MMD -MP
 ################################################################################
 
 NAME = AMateria
+
 all : $(NAME)
 
 $(NAME) : $(OBJS_DIR) $(OBJS)
@@ -72,6 +76,15 @@ $(OBJS_DIR) :
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/AMateria$(END)$(WHITE)...\n"
 	@mkdir $(OBJS_DIR)/classes/AMateria
 	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Cure$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/Cure
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Ice$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/Ice
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Character$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/Character
+	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Compilation des $(END)$(WHITE).cpp$(RED_TWO) en $(END)$(WHITE).o$(RED_TWO)...\n"
@@ -83,7 +96,6 @@ $(OBJS_DIR) :
 
 $(OBJS) : $(OBJS_DIR)/%.o : %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
-
 
 clean :
 	rm -rf $(OBJS_DIR)
