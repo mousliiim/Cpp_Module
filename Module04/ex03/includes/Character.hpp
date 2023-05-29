@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:21:27 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/28 01:50:04 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/29 23:10:54 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 #include <iostream>
 #include <string>
 
+#define MAX_MATERIA 4
+
+typedef struct AMateria_garbage
+{
+	AMateria				*aItem;
+	struct AMateria_garbage	*next;
+} _garbage;
+
 class Character : public ICharacter
 {
 	public:
@@ -28,11 +36,15 @@ class Character : public ICharacter
 		~Character();
 
 		std::string const &getName() const;
-		// void equip(AMateria *m);
-		// void unequip(int idx);
-		// void use(int idx, ICharacter &target);
+		void equip(AMateria *m);
+		void unequip(int idx);
+		void use(int idx, ICharacter &target);
 	private:
-		std::string _name;
+		std::string	_name;
+		AMateria	*_inventory[5];
+		size_t		_nbMateria;
+		_garbage	*_collector;
+
 };
 
 #endif
