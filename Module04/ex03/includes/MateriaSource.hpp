@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/30 09:22:59 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 09:35:46 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:22:59 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 #include "IMateriaSource.hpp"
 
 #define MAX_MATERIA 4
-
-class IMateriaSource;
 
 class MateriaSource : public IMateriaSource
 {

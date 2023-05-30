@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:35:07 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/26 19:43:04 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 10:17:47 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main(void)
 	std::cout << std::endl << "********************************************" << std::endl << std::endl;
 	std::cout << "*************** Wrong Animal ***************" << std::endl << std::endl;
 	std::cout << "Method in WrongAnimal is not virtual so it's not polymorphic" << std::endl;
-	std::cout << "WrongAnimal don't go to search in the Dog class if the method is overriden or not" << std::endl << std::endl;
+	std::cout << "WrongAnimal don't go to search in the WrongCat class if the method is overriden or not" << std::endl << std::endl;
 	std::cout << "Default Animal type: " << DefaultW->getType() << std::endl;
 	std::cout << "WrongCat Animal type: " << WrongCatTest->getType() << std::endl;
 	std::cout << "Default WrongAnimal sound: " << std::endl;
