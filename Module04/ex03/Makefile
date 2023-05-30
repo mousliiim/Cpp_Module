@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/05/28 02:02:08 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/05/30 09:27:18 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ SRC_FILES	= 	$(addprefix classes/AMateria/, AMateria.cpp) \
 				$(addprefix classes/Cure/, Cure.cpp) \
 				$(addprefix classes/Ice/, Ice.cpp) \
 				$(addprefix classes/Character/, Character.cpp) \
+				$(addprefix classes/MateriaSource/, MateriaSource.cpp) \
 				main.cpp
 
 ################################################################################
@@ -84,6 +85,9 @@ $(OBJS_DIR) :
 	@sleep 0.2
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Character$(END)$(WHITE)...\n"
 	@mkdir $(OBJS_DIR)/classes/Character
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/MateriaSource$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/MateriaSource
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2

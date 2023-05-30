@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:28:04 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/29 23:10:59 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 09:58:48 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,30 @@
 Character::Character() : _name("default"), _nbMateria(0), _collector(NULL)
 {
 	std::cout << "Character default constructor called" << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
 }
 
 Character::Character (const std::string &name) : _name(name), _nbMateria(0), _collector(NULL)
 {
 	std::cout << "Character constructor called" << std::endl;
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
+	
 }
 
 void Character::equip(AMateria *m)
 {
 	if (!m)
 		return ;
-	else if (_nbMateria < 4)
+	else if (_nbMateria < MAX_MATERIA)
 	{
 		_inventory[_nbMateria] = m;
 		_nbMateria++;
 	}
 	else
 	{
-		std::cout << "Character :: Inventory is full" << std::endl;
+		std::cout << "Character :: " << this->getName() << " Inventory is full" << std::endl;
 		delete m;
 		return ;
 	}
@@ -66,9 +67,10 @@ void Character::unequip(int idx)
 		}
 		_inventory[idx] = NULL;
 		_nbMateria--;
+		std::cout << "Character :: " << this->getName() << " Item unequiped from slot " << idx << std::endl;
 	}
 	else if (!_inventory[idx])
-		std::cout << "Character :: Inventory is empty" << std::endl;
+		std::cout << "Character :: Item is already unequiped from this slot" << std::endl;
 	else
 		std::cout << "Character :: Invalid index" << std::endl;
 }
@@ -80,7 +82,7 @@ void Character::use(int idx, ICharacter &target)
 	else if (_inventory[idx])
 		_inventory[idx]->use(target);
 	else if (!_inventory[idx])
-		std::cout << "Character :: Inventory is empty" << std::endl;
+		std::cout << "Character :: Item not equiped from this slot you can't use it" << std::endl;
 	else
 		std::cout << "Character :: Invalid index" << std::endl;
 }
@@ -93,12 +95,30 @@ void Character::use(int idx, ICharacter &target)
 
 Character::~Character()
 {
-	std::cout << "Character destructor called" << std::endl;
+	std::cout << "Character :: Destructor called" << std::endl;
+	_garbage	*tmp;
+
+	tmp = _collector;
+	int			i = -1;
+
+	while (_collector)
+	{
+		tmp = _collector;
+		_collector = _collector->next;
+		delete tmp->aItem;
+		delete tmp;
+	}
+	_collector = NULL;
+	while (++i < 4)
+	{
+		if (_inventory[i])
+			delete _inventory[i];
+	}
 }
 
 Character& Character::operator=(const Character& src)
 {
-	std::cout << "Character assignation operator called" << std::endl;
+	std::cout << "Character :: Assignation operator called" << std::endl;
 	(void)src;
 	return (*this);
 }

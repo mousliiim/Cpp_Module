@@ -1,50 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Character.hpp                                      :+:      :+:    :+:   */
+/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/28 01:21:27 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 09:21:05 by mmourdal         ###   ########.fr       */
+/*   Created: 2023/05/30 09:22:59 by mmourdal          #+#    #+#             */
+/*   Updated: 2023/05/30 09:35:46 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHARACTER
-# define CHARACTER
-
-#include "ICharacter.hpp"
-#include "AMateria.hpp"
+#ifndef MATERIASOURCE_HPP
+# define MATERIASOURCE_HPP
 
 #include <iostream>
 #include <string>
 
+#include "IMateriaSource.hpp"
+
 #define MAX_MATERIA 4
 
-typedef struct AMateria_garbage
-{
-	AMateria				*aItem;
-	struct AMateria_garbage	*next;
-} _garbage;
+class IMateriaSource;
 
-class Character : public ICharacter
+class MateriaSource : public IMateriaSource
 {
 	public:
-		Character();
-		Character (const std::string &name);
-		Character& operator=(const Character& player);
-		~Character();
-
-		std::string const &getName() const;
-		void equip(AMateria *m);
-		void unequip(int idx);
-		void use(int idx, ICharacter &target);
+		MateriaSource();
+		MateriaSource(const MateriaSource& rhs);
+		~MateriaSource();
+		MateriaSource& operator=(const MateriaSource& rhs);
+		
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 	private:
-		std::string	_name;
 		AMateria	*_inventory[MAX_MATERIA];
 		size_t		_nbMateria;
-		_garbage	*_collector;
-
 };
+
 
 #endif
