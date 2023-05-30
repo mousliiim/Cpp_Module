@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 00:31:30 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 09:54:28 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:58:17 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ Cure::~Cure() { std::cout << "Cure :: Destructor called\n"; }
 
 Cure::Cure(const Cure &src) : AMateria("cure")
 {
-	std::cout << "Cure :: Copy constructor called\n";
 	(void)src;
 }
 
 Cure &Cure::operator=(const Cure &src)
 {
-	std::cout << "Cure :: Assignation operator called\n";
 	(void)src;
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:21:27 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 09:21:05 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 21:05:19 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ class Character : public ICharacter
 	public:
 		Character();
 		Character (const std::string &name);
-		Character& operator=(const Character& player);
+		Character(const Character& src);
+		Character& operator=(const Character& src);
 		~Character();
 
 		std::string const &getName() const;

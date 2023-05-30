@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/27 22:48:09 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 10:23:49 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 21:00:57 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class AMateria
 	AMateria(std::string const & type);
 	virtual ~AMateria();
 
-	std::string const & getType() const; //Returns the materia type
+	std::string const & getType() const;
 	virtual AMateria* clone() const = 0;
 	virtual void use(ICharacter& target);
 	

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:28:04 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 09:58:48 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/30 21:08:00 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 Character::Character() : _name("default"), _nbMateria(0), _collector(NULL)
 {
-	std::cout << "Character default constructor called" << std::endl;
+	std::cout << "Character :: Default constructor called" << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
 }
 
 Character::Character (const std::string &name) : _name(name), _nbMateria(0), _collector(NULL)
 {
-	std::cout << "Character constructor called" << std::endl;
+	std::cout << "Character :: Constructor called" << std::endl;
 	for (int i = 0; i < MAX_MATERIA; i++)
 		_inventory[i] = NULL;
 	
@@ -42,6 +42,27 @@ void Character::equip(AMateria *m)
 		delete m;
 		return ;
 	}
+}
+
+Character::Character(const Character &src) : _collector(NULL)
+{
+	*this = src;
+}
+
+Character &Character::operator=(const Character &src)
+{
+	if (this != &src)
+	{
+		this->_name = src._name;
+		this->_nbMateria = src._nbMateria;
+		for (int i = 0; i < MAX_MATERIA; i++)
+		{
+			if (this->_inventory[i])
+				delete this->_inventory[i];
+			this->_inventory[i] = src._inventory[i]->clone();
+		}
+	}
+	return (*this);
 }
 
 void Character::unequip(int idx)
@@ -67,10 +88,10 @@ void Character::unequip(int idx)
 		}
 		_inventory[idx] = NULL;
 		_nbMateria--;
-		std::cout << "Character :: " << this->getName() << " Item unequiped from slot " << idx << std::endl;
+		std::cout << "Character :: " << this->getName() << " item unequiped from slot " << idx << std::endl;
 	}
 	else if (!_inventory[idx])
-		std::cout << "Character :: Item is already unequiped from this slot" << std::endl;
+		std::cout << "Character :: " << this->getName() << " item is already unequiped from this slot" << std::endl;
 	else
 		std::cout << "Character :: Invalid index" << std::endl;
 }
@@ -82,16 +103,10 @@ void Character::use(int idx, ICharacter &target)
 	else if (_inventory[idx])
 		_inventory[idx]->use(target);
 	else if (!_inventory[idx])
-		std::cout << "Character :: Item not equiped from this slot you can't use it" << std::endl;
+		std::cout << "Character :: " << this->getName() << " item is not equiped in this slot" << std::endl;
 	else
 		std::cout << "Character :: Invalid index" << std::endl;
 }
-
-// Character::Character(const Character &src)
-// {
-// 	std::cout << "Character copy constructor called" << std::endl;
-// 	this->_name = src._name;
-// }
 
 Character::~Character()
 {
@@ -114,13 +129,6 @@ Character::~Character()
 		if (_inventory[i])
 			delete _inventory[i];
 	}
-}
-
-Character& Character::operator=(const Character& src)
-{
-	std::cout << "Character :: Assignation operator called" << std::endl;
-	(void)src;
-	return (*this);
 }
 
 std::string const &Character::getName() const
