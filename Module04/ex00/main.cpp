@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 14:35:07 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 10:17:47 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:29:25 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,12 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-void exit_and_free ( const Animal* Default, const Animal* DogTest, const WrongAnimal* DefaultW, const WrongAnimal* WrongCatTest )
-{
-	if ( Default )
-		delete Default;
-	if ( DogTest )
-		delete DogTest;
-	if ( DefaultW )
-		delete DefaultW;
-	if ( WrongCatTest )
-		delete WrongCatTest;
-	std::cout << std::endl << "Memory allocation failed, exiting program..." << std::endl << std::endl;
-}
-
 int main(void)
 {
 	const Animal* Default = new ( std::nothrow ) Animal();
     const Animal* DogTest = new ( std::nothrow ) Dog();
     const WrongAnimal* DefaultW = new ( std::nothrow ) WrongAnimal();
     const WrongAnimal* WrongCatTest = new ( std::nothrow ) WrongCat();
-
-	if ( !Default || !DogTest || !DefaultW || !WrongCatTest )
-		return (exit_and_free(Default, DogTest, DefaultW, WrongCatTest), 1);
 
 	std::cout << std::endl << "*************** Real Animal ***************" << std::endl << std::endl;
 	std::cout << "Method in Animal is virtual so it's polymorphic" << std::endl;

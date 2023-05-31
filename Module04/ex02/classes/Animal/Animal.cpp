@@ -32,15 +32,6 @@ Animal &Animal::operator=( Animal const & rhs )
 }
 
 /*
-** --------------------------------- METHODS ----------------------------------
-*/
-
-void Animal::makeSound ( void ) const
-{
-	std::cout << "< " << this->getType() << " > : ** MAKE SOUND ** !\n";
-}
-
-/*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 

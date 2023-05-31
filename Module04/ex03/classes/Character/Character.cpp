@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/28 01:28:04 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/05/30 21:08:00 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:28:12 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,6 @@ void Character::unequip(int idx)
 	}
 	else if (!_inventory[idx])
 		std::cout << "Character :: " << this->getName() << " item is already unequiped from this slot" << std::endl;
-	else
-		std::cout << "Character :: Invalid index" << std::endl;
 }
 
 void Character::use(int idx, ICharacter &target)
