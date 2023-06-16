@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:22:15 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/16 22:02:03 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/16 22:02:56 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,30 @@ void	Bureaucrat::downGrade ( void )
 	_grade++;
 }
 
+void	Bureaucrat::signForm ( Form &form ) 
+{
+	if (_grade > form.getGradeSign())
+	{
+		std::cout << _name << " couldn't sign " << form.getName() << " because his grade is too low";
+		form.getSigned() == true ? std::cout << " and the form is already signed\n" : std::cout << "\n";
+	}
+	else if (form.getSigned())
+		std::cout << _name << " couldn't sign " << form.getName() << " because the form is already signed\n";
+	else
+	{
+		std::cout << _name << " signed " << form.getName() << std::endl;
+		form.beSigned(*this);
+	}
+}
+
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Bureaucrat :: Grade too high\n");
+	return ("Bureaucrat :: Grade too high");
 }
 
 const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Bureaucrat :: Grade too low\n");
+	return ("Bureaucrat :: Grade too low");
 }
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &Bureaucrat)
