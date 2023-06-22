@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:10:43 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/21 22:58:12 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/22 19:02:23 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 RobotomyRequestForm::RobotomyRequestForm ( void ) : AForm("RobotomyRequestForm", 72, 45), _target("default_robotomy") { _gradeExec = 45; }
 
-RobotomyRequestForm::RobotomyRequestForm ( std::string const &target ) : AForm("RobotomyRequestForm", 72, 45), _target(target + "_robotomy") { _gradeExec = 45; }
+RobotomyRequestForm::RobotomyRequestForm ( std::string const &target ) : AForm("RobotomyRequestForm", 72, 45), _target(target) { _gradeExec = 45; }
 
 RobotomyRequestForm::RobotomyRequestForm ( RobotomyRequestForm const & src ) { *this = src; }
 
@@ -42,3 +42,5 @@ RobotomyRequestForm &RobotomyRequestForm::operator=( RobotomyRequestForm const &
 	}
 	return (*this);
 }
+
+std::string	RobotomyRequestForm::getTarget ( void ) const { return (this->_target); }

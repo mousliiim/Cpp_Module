@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:45:46 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/21 23:17:45 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:54:09 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class RobotomyRequestForm : public AForm
 		~RobotomyRequestForm ( void );
 		RobotomyRequestForm &operator=( RobotomyRequestForm const & rhs );
 		virtual void execute(Bureaucrat const & executor) const;
+		virtual std::string	getTarget ( void ) const;
 
 	private:
 		int 		_gradeExec;

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 22:28:20 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/21 23:20:18 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:53:47 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class AForm
 		bool 			getSigned ( void ) const;
 		int				getGradeSign ( void ) const;
 		int				getGradeExecute ( void ) const;
+		virtual			std::string	getTarget ( void ) const = 0;
 		void			beSigned ( const Bureaucrat &bureaucrat );
 		virtual void	execute ( Bureaucrat const & executor ) const = 0;
 

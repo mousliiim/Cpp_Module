@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/06/21 23:01:11 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/06/22 17:46:17 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC_FILES	= 	$(addprefix classes/Bureaucrat/, Bureaucrat.cpp) \
 				$(addprefix classes/ShrubberyCreationForm/, ShrubberyCreationForm.cpp) \
 				$(addprefix classes/RobotomyRequestForm/, RobotomyRequestForm.cpp) \
 				$(addprefix classes/PresidentialPardonForm/, PresidentialPardonForm.cpp) \
+				$(addprefix classes/Intern/, Intern.cpp) \
 				main.cpp
 
 ################################################################################
@@ -57,7 +58,7 @@ CXXFLAGS	= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes -MMD -MP
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = OfficeFormExec
+NAME = Intern
 all : $(NAME)
 
 $(NAME) : $(OBJS_DIR) $(OBJS)
@@ -87,6 +88,9 @@ $(OBJS_DIR) :
 	@sleep 0.2
 	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/PresidentialPardonForm$(END)$(WHITE)...\n"
 	@mkdir $(OBJS_DIR)/classes/PresidentialPardonForm
+	@sleep 0.2
+	@printf "$(RED_TWO)%24s Création du dossier $(END)$(WHITE)$(OBJS_DIR)/classes/Intern$(END)$(WHITE)...\n"
+	@mkdir $(OBJS_DIR)/classes/Intern
 	@sleep 0.2
 	@printf "$(RED_TWO)%20s Création des $(END)$(WHITE).o$(RED_TWO) dans $(END)$(WHITE)$(OBJS_DIR)$(END)$(WHITE)...\n"
 	@sleep 0.2

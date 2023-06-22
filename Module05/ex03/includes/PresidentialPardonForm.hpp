@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 21:45:09 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/21 23:17:40 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:54:02 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class PresidentialPardonForm : public AForm
 		~PresidentialPardonForm ( void );
 		PresidentialPardonForm &operator=( PresidentialPardonForm const & rhs );
 		virtual void execute(Bureaucrat const & executor) const;
+		virtual std::string	getTarget ( void ) const;
 
 	private:
 		int 		_gradeExec;

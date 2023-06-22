@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 22:11:03 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/21 23:25:29 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/22 18:54:21 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,3 +66,5 @@ ShrubberyCreationForm &ShrubberyCreationForm::operator=( ShrubberyCreationForm c
 	}
 	return (*this);
 }
+
+std::string	ShrubberyCreationForm::getTarget ( void ) const { return (this->_target); }
