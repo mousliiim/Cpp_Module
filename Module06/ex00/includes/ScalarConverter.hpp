@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:44:20 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/27 02:02:34 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/27 20:47:59 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 # include <cstring>
 # include <climits>
 
-# define T_CHAR 0
-# define T_INT 1
-# define T_FLOAT 2
-# define T_DOUBLE 3
-# define T_NAN 4
-# define T_INF 5
-# define T_ERROR 6
+# define CHAR 0
+# define INT 1
+# define FLOAT 2
+# define DOUBLE 3
+# define NAN 4
+# define INF 5
+# define IMPOSSIBLE 6
 # define SIZE_TAB 7
 
 class ScalarConverter
@@ -43,6 +43,11 @@ class ScalarConverter
 		bool isInt ( void );
 		bool isDouble ( void );
 		bool isFloat ( void );
+		void convert ( std::string const &literal );
+		void convertChar ( void );
+		void convertInt ( void );
+		void convertFloat ( void );
+		void convertDouble ( void );
 		
 	private:
 		std::string _str;
