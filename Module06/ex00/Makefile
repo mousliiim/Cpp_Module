@@ -6,7 +6,7 @@
 #    By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 23:59:55 by mmourdal          #+#    #+#              #
-#    Updated: 2023/06/22 19:44:55 by mmourdal         ###   ########.fr        #
+#    Updated: 2023/06/28 18:57:11 by mmourdal         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ CXXFLAGS	= -g3 -std=c++98 -Wall -Wextra -Werror -Iincludes -MMD -MP
 #                                  MAKEFILE                                    #
 ################################################################################
 
-NAME = ScalarConverter
+NAME = convert
 all : $(NAME)
 
 $(NAME) : $(OBJS_DIR) $(OBJS)

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:22:15 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/27 21:31:20 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:55:12 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,48 @@ ScalarConverter::ScalarConverter ( void ) { }
 ScalarConverter::ScalarConverter ( std::string const &str )
 {
 	this->_str = str;
+	if (_str == "nanf" || _str == "nan" || _str == "inff" || _str == "inf" || _str == "+inff" || _str == "+inf" || _str == "-inff" || _str == "-inf")
+	{
+		this->printSpecial();
+		return ;
+	}
 	this->_originalType = determineType();
 	if (this->_originalType != IMPOSSIBLE)
 		this->convert(str);
 	else
 		this->convert("impossible");
+}
+
+void ScalarConverter::printSpecial ( void )
+{
+	if (_str == "nanf" || _str == "nan")
+	{
+		std::cout << "char : impossible\n";
+		std::cout << "int : impossible\n";
+		std::cout << "float : nanf\n";
+		std::cout << "double : nan\n";
+	}
+	else if (_str == "inff" || _str == "inf")
+	{
+		std::cout << "char : impossible\n";
+		std::cout << "int : impossible\n";
+		std::cout << "float : inff\n";
+		std::cout << "double : inf\n";
+	}
+	else if (_str == "+inff" || _str == "+inf")
+	{
+		std::cout << "char : impossible\n";
+		std::cout << "int : impossible\n";
+		std::cout << "float : +inff\n";
+		std::cout << "double : +inf\n";
+	}
+	else if (_str == "-inff" || _str == "-inf")
+	{
+		std::cout << "char : impossible\n";
+		std::cout << "int : impossible\n";
+		std::cout << "float : -inff\n";
+		std::cout << "double : -inf\n";
+	}
 }
 
 ScalarConverter::~ScalarConverter ( void ) { }
@@ -44,8 +81,12 @@ ScalarConverter &ScalarConverter::operator= (ScalarConverter const &rhs)
 bool ScalarConverter::isInt ( void )
 {
     char *fin;
+	long nb = std::strtol(this->_str.c_str(), &fin, 10);
 	
-	std::strtol(this->_str.c_str(), &fin, 10);
+	if (nb >= INT_MIN && nb <= INT_MAX)
+		this->_overflow = false;
+	else
+		this->_overflow = true;
 	if (*fin == '\0' && this->_str.size() > 0)
 		return true;
 	return false;
@@ -101,7 +142,6 @@ short ScalarConverter::determineType ( void )
 		return CHAR;
 	if (isFloat())
 		return FLOAT;
-	// CHECK NANF AND INFF WITH - AND +
 	return IMPOSSIBLE;
 }
 
@@ -143,7 +183,7 @@ void ScalarConverter::convertChar ( void )
 
 void ScalarConverter::convertInt ( void )
 {
-	int i = std::atoi(this->_str.c_str());
+	double i = std::atol(this->_str.c_str());
 	char c = static_cast<char>(i);
 	float f = static_cast<float>(i);
 	double d = static_cast<double>(i);
@@ -153,7 +193,10 @@ void ScalarConverter::convertInt ( void )
 		std::cout << "'" << c << "'\n";
 	else
 		std::cout << "Non displayable\n";
-	std::cout << "int : " << i << "\n";
+	if (this->_overflow == false)
+		std::cout << "int : " << i << "\n";
+	else
+		std::cout << "int : impossible\n";
 	std::cout << "float : " << std::fixed << std::setprecision(1) << f << "f\n";
 	std::cout << "double : " << std::fixed << std::setprecision(1) << d << "\n";
 }
@@ -171,7 +214,7 @@ void ScalarConverter::convertFloat ( void )
 	else
 		std::cout << "Non displayable\n";
 	std::cout << "int : ";
-	if (d >= INT_MIN && d <= INT_MAX)
+	if (this->_overflow == false)
 		std::cout << i << "\n";
 	else
 		std::cout << "impossible\n";
@@ -192,7 +235,7 @@ void ScalarConverter::convertDouble ( void )
 	else
 		std::cout << "Non displayable\n";
 	std::cout << "int : ";
-	if (d >= INT_MIN && d <= INT_MAX)
+	if (this->_overflow == false)
 		std::cout << i << "\n";
 	else
 		std::cout << "impossible\n";

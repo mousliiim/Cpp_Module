@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 16:44:20 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/27 20:47:59 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:33:18 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ class ScalarConverter
 		void convertInt ( void );
 		void convertFloat ( void );
 		void convertDouble ( void );
+		void printSpecial ( void );
 		
 	private:
 		std::string _str;
+		bool		_overflow;
 		short		_originalType;
 };
 
