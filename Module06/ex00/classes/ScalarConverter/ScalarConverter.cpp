@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 18:22:15 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/06/28 18:55:12 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/06/29 20:44:05 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ ScalarConverter &ScalarConverter::operator= (ScalarConverter const &rhs)
 	{
 		this->_str = rhs._str;
 		this->_originalType = rhs._originalType;
+		this->_overflow = rhs._overflow;
 	}
 	return (*this);
 }
