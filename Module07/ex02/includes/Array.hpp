@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 19:51:29 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/07 23:17:50 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/07 23:23:50 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ class Array
 			for (unsigned int i = 0; i < this->_size; i++)
 				this->_array[i] = T();
 		}
+
 		Array(Array const & src) : _size(src._size), _array(new T[_size])
 		{
 			for (unsigned int i = 0; i < this->_size; i++)
@@ -65,6 +66,7 @@ class Array
 			return this->_array[n];
 		
 		}
+		
 		void setValue (unsigned int n, T value)
 		{
 			if (n >= this->_size || n < 0)
@@ -72,6 +74,7 @@ class Array
 			this->_array[n] = value;
 		
 		}
+
 		class OutOfLimitsException : public std::exception
 		{
 			public:
