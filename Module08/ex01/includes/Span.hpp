@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/09 20:57:34 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/09 22:15:07 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/10 02:15:14 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 
 # include <iostream>
 # include <string>
-# include <algorithm>
 # include <vector>
-# include <list>
+# include <algorithm>
+# include <set>
 
-typedef std::vector <int>::iterator it_v;
+typedef std::multiset<int>::iterator it_ms;
 
 class Span
 {
@@ -29,16 +29,19 @@ class Span
 		Span ( const Span &src );
 		Span &operator= ( const Span &src );
 		~Span ( void );
-		unsigned int getN( void ) const;
-		std::vector <int> getArray( void ) const;
+
 		void addNumber( int n );
-		void displayArray ( void );
+		void addNumber( int n, int m );
+		void addNumber( it_ms begin, it_ms end );
+		void displaySpan ( void );
 		int shortestSpan( void );
 		int longestSpan( void );
+		unsigned int getN( void ) const;
+		std::multiset <int> getArray( void ) const;
 
 	private:
 		unsigned int _size;
-		std::vector <int> _array;
+		std::multiset <int> _array;
 };
 
 #endif
