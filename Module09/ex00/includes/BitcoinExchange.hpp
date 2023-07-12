@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 00:15:51 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/11 18:30:22 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/12 17:45:43 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,34 @@
 # define MONTH 1
 # define DAY 2
 # define PRICE 3
+# define RATIO 3
 
 # define OK 0
 # define ERROR_DATE 1
 # define ERROR_PRICE 2
 # define ERROR_NOT_FOUND 3
+# define ERROR_FORMAT 4
+# define ERROR_TOO_LARGE 5
+# define ERROR_TOO_SMALL 6
 
 class BitcoinExchange
 {
 	public:
 		BitcoinExchange ( void );
 		BitcoinExchange ( char *inputFile );
-		BitcoinExchange ( BitcoinExchange const &src);
-		BitcoinExchange &operator=( BitcoinExchange const &src);
+		BitcoinExchange ( BitcoinExchange const &src );
+		BitcoinExchange &operator=( BitcoinExchange const &src );
 		~BitcoinExchange ( void );
 
 		void	parsingData ( void );
-		bool	checkDataLine (std::string const &line);
-		short	checkDataInput (std::string const &line);
+		short	checkDataLine (std::string const &line, bool checkData );
 		void	parsingInput ( void );
 		void	printResult ( std::string const &line, short display );
 
 	private:
-		char *_inputFile;
-		std::map <std::string, double> _mDatePrice;
+		char *							_inputFile;
+		std::map <std::string, double>	_mDatePrice;
+		double							_ratio;
 };
 
 #endif
