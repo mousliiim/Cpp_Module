@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 00:15:51 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/12 17:45:43 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/13 02:11:05 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,16 @@
 # include <cstdlib>
 # include <cstring>
 # include <climits>
+#include <algorithm>
 
 # define WHITE_B "\033[1;37m"
-# define RED_B "\033[1;31m"
-# define YELLOW_B "\033[1;33m"
 # define RESET "\033[0m"
 
 # define YEAR 0
 # define MONTH 1
 # define DAY 2
 # define PRICE 3
-# define RATIO 3
+# define WALLET 3
 
 # define OK 0
 # define ERROR_DATE 1
@@ -53,6 +52,7 @@ class BitcoinExchange
 		~BitcoinExchange ( void );
 
 		void	parsingData ( void );
+		short	processLine ( std::stringstream &ss, std::string const &line, std::string data[4], bool checkData );
 		short	checkDataLine (std::string const &line, bool checkData );
 		void	parsingInput ( void );
 		void	printResult ( std::string const &line, short display );
@@ -60,43 +60,7 @@ class BitcoinExchange
 	private:
 		char *							_inputFile;
 		std::map <std::string, double>	_mDatePrice;
-		double							_ratio;
+		double							_wallet;
 };
 
 #endif
-
-/*
-day = 30;
-if (mois % 2 && mois < 8) // 1, 3, 5, 7,
-	day = 31;
-else if (mois % 2 == 0 && mois > 8) // 9, 11
-	day = 30;
-
-day = 31;
-if (mois < 8)
-{
-	day = (mois % 2 == 0 ? 30 : 31);
-}
-
-2012 = FEVRIER FINI PAR 29
-2013 = FEVRIER FINI PAR 28
-2014 = FEVRIER FINI PAR 28
-2015 = FEVRIER FINI PAR 28
-2016 = FEVRIER FINI PAR 29
-
-1 jan 31
-2 fev 28 29
-3 mars 31
-4 avril 30
-5 mai 31
-6 juin 30
-7 jui 31
-8 aout 31
-9 sept 30
-10 oct 31
-11 nov 30
-12 dec 31
-
-les mois qui finissent par 31
-1 3 5 7 8 10 12
-*/

@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 02:43:41 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/12 18:48:49 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/13 01:57:34 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,44 @@ void BitcoinExchange::parsingData ( void )
 	data.close();
 }
 
+short BitcoinExchange::processLine ( std::stringstream &ss, std::string const &line, std::string data[4], bool checkData )
+{
+	if (checkData)
+	{
+		ss >> data[PRICE];
+		for (int i = 0; data[WALLET][i]; i++)
+			if (data[WALLET][i] == '.' && !std::isdigit(data[WALLET][i + 1]))
+				return ERROR_FORMAT;
+		std::string::difference_type n = std::count(data[PRICE].begin(), data[PRICE].end(), '.');
+		if (n > 1)
+			return ERROR_DATE;
+		if (ss.fail() || !ss.eof() || data[PRICE].find_first_not_of("0123456789.") != std::string::npos || data[PRICE].empty() || std::atof(data[PRICE].c_str()) < 0)
+			return ERROR_PRICE;
+		_mDatePrice.insert(std::pair<std::string, double>(line.substr(0, 10), std::atof(data[PRICE].c_str())));
+	}
+	else
+	{
+		ss >> data[WALLET];
+		if (data[WALLET].find_first_not_of("|") != std::string::npos || data[3].empty())
+			return ERROR_FORMAT;
+		ss >> data[WALLET];
+		for (int i = 0; data[WALLET][i]; i++)
+			if (data[WALLET][i] == '.' && !std::isdigit(data[WALLET][i + 1]))
+				return ERROR_FORMAT;
+		std::string::difference_type n = std::count(data[WALLET].begin(), data[PRICE].end(), '.');
+		if (n > 1)
+			return ERROR_FORMAT;
+		if (std::atof(data[WALLET].c_str()) > INT_MAX)
+			return ERROR_TOO_LARGE;
+		if (std::atof(data[WALLET].c_str()) < 0)
+			return ERROR_TOO_SMALL;
+		if (ss.fail() || !ss.eof() || data[WALLET].find_first_not_of("0123456789.") != std::string::npos || data[WALLET].empty())
+			return ERROR_FORMAT;
+		_wallet = std::atof(data[WALLET].c_str());
+	}
+	return OK;
+}
+
 short  BitcoinExchange::checkDataLine (std::string const &line, bool checkData)
 {
 	std::string data[4];
@@ -80,33 +118,9 @@ short  BitcoinExchange::checkDataLine (std::string const &line, bool checkData)
 		max[MONTH] = (value[YEAR] % 4) ? 28 : 29;
 
 	for (int i = 0; i < 3; i++)
-	{
 		if (data[i].empty() || data[i].find_first_not_of("0123456789") != std::string::npos || value[i] < min[i] || value[i] > max[i])
 			return ERROR_DATE;
-	}
-
-	if (checkData)
-	{
-		ss >> data[PRICE];
-		if (ss.fail() || !ss.eof() || data[PRICE].find_first_not_of("0123456789.") != std::string::npos || data[PRICE].empty() || std::atof(data[PRICE].c_str()) < 0)
-			return ERROR_PRICE;
-		_mDatePrice.insert(std::pair<std::string, double>(line.substr(0, 10), std::atof(data[PRICE].c_str())));
-	}
-	else
-	{
-		ss >> data[3];
-		if (data[3].find_first_not_of("|") != std::string::npos || data[3].empty())
-			return ERROR_FORMAT;
-		ss >> data[RATIO];
-		if (std::atof(data[RATIO].c_str()) > INT_MAX)
-			return ERROR_TOO_LARGE;
-		if (std::atof(data[RATIO].c_str()) < 0)
-			return ERROR_TOO_SMALL;
-		if (ss.fail() || !ss.eof() || data[RATIO].find_first_not_of("0123456789.") != std::string::npos || data[RATIO].empty())
-			return ERROR_FORMAT;
-		_ratio = std::atof(data[RATIO].c_str());
-	}
-	return OK;
+	return processLine(ss, line, data, checkData);
 }
 
 void BitcoinExchange::parsingInput ( void )
@@ -123,26 +137,12 @@ void BitcoinExchange::parsingInput ( void )
 	input.close();
 }
 
-// $> ./btc
-// Error: could not open file.
-// $> ./btc input.txt
-// 2011-01-03 => 3 = 0.9
-// 2011-01-03 => 2 = 0.6
-// 2011-01-03 => 1 = 0.3
-// 2011-01-03 => 1.2 = 0.36
-// 2011-01-09 => 1 = 0.32
-// Error: not a positive number.
-// Error: bad input => 2001-42-42
-// 2012-01-11 => 1 = 7.1
-// Error: too large a number.
-// $>
-
 void BitcoinExchange::printResult ( std::string const &line, short error )
 {
-	size_t check = _mDatePrice.count(line.substr(0, 10));
-	if (!check)
+	bool check = _mDatePrice.count(line.substr(0, 10));
+	
+	if (!check && error == OK)
 	{
-		error = ERROR_NOT_FOUND;
 		std::map<std::string, double>::iterator map_it = _mDatePrice.begin();
 		std::string tmp = map_it->first;
 		for (; map_it != _mDatePrice.end(); map_it++)
@@ -150,16 +150,14 @@ void BitcoinExchange::printResult ( std::string const &line, short error )
 			if (map_it->first > tmp && map_it->first < line.substr(0, 10))
 				tmp = map_it->first;
 		}
-		std::cout << " DATE LOWER THAN " << line.substr(0, 10) << " => " << tmp << " = " << _mDatePrice[tmp] * _ratio << std::endl;
+		std::cout << line.substr(0, 10) << " => "  << _wallet << " = " << _mDatePrice[tmp] * _wallet << std::endl;
+		return ;
 	}
+
 	switch (error)
 	{
 		case OK:
-			std::cout << line.substr(0, 10) << " => "  << _ratio << " = " << _mDatePrice[line.substr(0, 10)] * _ratio << std::endl;
-			break;
-		case ERROR_NOT_FOUND:
-			// FIX MEEEEE
-			// std::cout << tmp << " => "  << _ratio << " = " << _mDatePrice[tmp] * _ratio << std::endl;
+			std::cout << line.substr(0, 10) << " => "  << _wallet << " = " << _mDatePrice[line.substr(0, 10)] * _wallet << std::endl;
 			break;
 		case ERROR_DATE:
 			std::cout << "Error: bad input => " << line << std::endl;
