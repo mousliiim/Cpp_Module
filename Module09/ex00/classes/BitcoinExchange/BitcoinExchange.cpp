@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 02:43:41 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/13 01:57:34 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:01:07 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@ BitcoinExchange &BitcoinExchange::operator= ( BitcoinExchange const &src)
 {
 	if (this != &src)
 	{
-		(void)src;
+		_inputFile = src._inputFile;
+		_wallet = src._wallet;
+		_mDatePrice = src._mDatePrice;
 	}
 	return (*this);
 }
@@ -40,11 +42,11 @@ BitcoinExchange::~BitcoinExchange ( void ) { }
 
 void BitcoinExchange::parsingData ( void )
 {
-	std::ifstream data("files/data.csv");
+	std::ifstream data("assets/data.csv");
 	std::string line;
 
 	if (!data.is_open())
-		throw std::invalid_argument(WHITE_B "Error :: " RESET "Can't open file /files/data.csv");
+		throw std::invalid_argument(WHITE_B "Error :: " RESET "Can't open file /assets/data.csv");
 	std::getline(data, line);
 	line == "date,exchange_rate" ? true : throw std::invalid_argument(WHITE_B "Error :: " RESET "Wrong file format of csv");
 	while (std::getline(data, line))
@@ -114,9 +116,8 @@ short  BitcoinExchange::checkDataLine (std::string const &line, bool checkData)
 		max[DAY] = (value[MONTH] % 2 == 0 ? 30 : 31);
 	else if (value[MONTH] > 8)
 		max[MONTH] = (value[MONTH] % 2 ? 30 : 31);
-	if (value[1] == 2)
+	if (value[MONTH] == 2)
 		max[MONTH] = (value[YEAR] % 4) ? 28 : 29;
-
 	for (int i = 0; i < 3; i++)
 		if (data[i].empty() || data[i].find_first_not_of("0123456789") != std::string::npos || value[i] < min[i] || value[i] > max[i])
 			return ERROR_DATE;

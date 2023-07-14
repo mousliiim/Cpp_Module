@@ -5,27 +5,27 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/11 00:15:41 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/13 18:58:56 by mmourdal         ###   ########.fr       */
+/*   Created: 2023/07/13 18:41:28 by mmourdal          #+#    #+#             */
+/*   Updated: 2023/07/14 02:08:54 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange.hpp"
+#include "RPN.hpp"
 
-int main (int argc, char **argv)
+int main ( int argc, char **argv )
 {
 	if (argc != 2)
 	{
-		std::cerr << "Error: could not open file." << std::endl;
-		return (ERROR);
+		std::cerr << WHITE_BOLD << "Error ::" << RESET << " correct usage : ./RPN \"expression\"" << std::endl;
+		return ERROR;
 	}
-	else 
+	else
 	{
 		try
 		{
-			BitcoinExchange btc(argv[1]);
+			RPN rpn(argv[1]);
 		}
-		catch (std::exception &e)
+		catch ( std::exception &e )
 		{
 			std::cerr << e.what() << std::endl;
 		}

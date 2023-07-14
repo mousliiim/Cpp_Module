@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 00:15:51 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/13 02:11:05 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/14 02:10:06 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define DAY 2
 # define PRICE 3
 # define WALLET 3
+
+# define ERROR 1
+# define SUCCESS 0
 
 # define OK 0
 # define ERROR_DATE 1
