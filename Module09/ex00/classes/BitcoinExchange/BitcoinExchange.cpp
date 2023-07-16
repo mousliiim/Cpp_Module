@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 02:43:41 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/13 19:01:07 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/16 21:16:45 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ short BitcoinExchange::processLine ( std::stringstream &ss, std::string const &l
 		std::string::difference_type n = std::count(data[WALLET].begin(), data[PRICE].end(), '.');
 		if (n > 1)
 			return ERROR_FORMAT;
-		if (std::atof(data[WALLET].c_str()) > INT_MAX)
+		if (std::atof(data[WALLET].c_str()) > INT_MAX || std::atof(data[WALLET].c_str()) > 1000)
 			return ERROR_TOO_LARGE;
 		if (std::atof(data[WALLET].c_str()) < 0)
 			return ERROR_TOO_SMALL;
