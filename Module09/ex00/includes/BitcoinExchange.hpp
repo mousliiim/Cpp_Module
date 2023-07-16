@@ -6,7 +6,7 @@
 /*   By: mmourdal <mmourdal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 00:15:51 by mmourdal          #+#    #+#             */
-/*   Updated: 2023/07/14 02:10:06 by mmourdal         ###   ########.fr       */
+/*   Updated: 2023/07/14 02:14:55 by mmourdal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <cstdlib>
 # include <cstring>
 # include <climits>
-#include <algorithm>
+# include <algorithm>
 
 # define WHITE_B "\033[1;37m"
 # define RESET "\033[0m"
